@@ -30,20 +30,25 @@ const { Navigator, Screen } = createBottomTabNavigator<AppRoutes>();
 export function AppRoutes() {
   const { sizes, colors } = useTheme();
 
-  const iconSize = sizes[6];
+  const iconSize = sizes[7];
 
   return (
     <Navigator
       screenOptions={{
+        tabBarLabelStyle: {
+          fontSize: 13,
+          marginTop: -10,
+          marginBottom: -10,
+        },
         headerShown: false,
         tabBarActiveTintColor: colors.green[500],
         tabBarInactiveTintColor: colors.gray[200],
         tabBarStyle: {
           backgroundColor: colors.gray[600],
-          marginBottom: Platform.OS === "android" ? "auto" : 30,
-          margin: Platform.OS === "android" ? "auto" : 10,
-          borderRadius: Platform.OS === "android" ? "auto" : 10,
-          height: Platform.OS === "android" ? "auto" : 96,
+          marginBottom: 30,
+          margin: 10,
+          borderRadius: 20,
+          height: Platform.OS === "android" ? "auto" : 85,
           borderTopWidth: 0,
         },
       }}
