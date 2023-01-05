@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { TouchableOpacity } from "react-native";
-import { Center, ScrollView, VStack, Skeleton, Text } from "native-base";
+import {
+  Center,
+  ScrollView,
+  VStack,
+  Skeleton,
+  Text,
+  Heading,
+} from "native-base";
 
 import { ScreenHeader } from "@components/ScreenHeader";
 import { UserPhoto } from "@components/UserPhoto";
@@ -48,6 +55,18 @@ export function Profile() {
           <Input placeholder="Nome" bg="gray.500" />
           <Input placeholder="E-mail" bg="gray.400" isDisabled />
         </Center>
+        <VStack px={10} mt={12} mb={12}>
+          <Heading color="gray.200" fontSize="md" mb={3}>
+            Alterar senha
+          </Heading>
+          <Input placeholder="Senha antiga" bg="gray.500" secureTextEntry />
+          <Input placeholder="Nova senha" bg="gray.500" secureTextEntry />
+          <Input
+            placeholder="Confirmar nova senha"
+            bg="gray.500"
+            secureTextEntry
+          />
+        </VStack>
       </ScrollView>
     </VStack>
   );
