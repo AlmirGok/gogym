@@ -1,4 +1,4 @@
-import { VStack, Icon, HStack, Heading, Text } from "native-base";
+import { VStack, Icon, HStack, Heading, Text, Image } from "native-base";
 import { TouchableOpacity } from "react-native";
 
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
@@ -33,6 +33,20 @@ export function Exercise() {
           </HStack>
         </HStack>
       </HStack>
+
+      <VStack p={8}>
+        <Image
+          source={{
+            uri: "https://www.centralnacionalunimed.com.br/documents/20182/11762772/capa-mulher-exercicio.jpg/035e0477-f1bc-4150-8e23-8b2561fc555b?t=1599143323428",
+          }}
+          alt="Nome do exercício"
+          w="full"
+          h={80}
+          rounded="lg"
+          mb={3}
+          resizeMode="cover"
+        />
+      </VStack>
     </VStack>
   );
 }
