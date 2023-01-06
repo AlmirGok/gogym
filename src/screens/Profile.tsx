@@ -12,6 +12,7 @@ import {
 import { ScreenHeader } from "@components/ScreenHeader";
 import { UserPhoto } from "@components/UserPhoto";
 import { Input } from "@components/Input";
+import { Button } from "@components/Button";
 
 const PHOTO_SIZE = 33;
 
@@ -66,6 +67,7 @@ export function Profile() {
             bg="gray.500"
             secureTextEntry
           />
+          <Button title="Atualizar" mt={4} />
         </VStack>
       </ScrollView>
     </VStack>

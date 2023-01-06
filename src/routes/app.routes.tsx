@@ -17,10 +17,10 @@ import { History } from "@screens/History";
 import { Exercise } from "@screens/Exercise";
 
 type AppRoutes = {
-  home: undefined;
+  Início: undefined;
   exercite: undefined;
-  profile: undefined;
-  history: undefined;
+  Perfil: undefined;
+  Histórico: undefined;
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -36,7 +36,7 @@ export function AppRoutes() {
     <Navigator
       screenOptions={{
         tabBarLabelStyle: {
-          fontSize: 13,
+          fontSize: 12,
           marginTop: -10,
           marginBottom: -10,
         },
@@ -55,7 +55,7 @@ export function AppRoutes() {
       }}
     >
       <Screen
-        name="home"
+        name="Início"
         component={Home}
         options={{
           tabBarIcon: ({ color }) => (
@@ -64,7 +64,7 @@ export function AppRoutes() {
         }}
       />
       <Screen
-        name="history"
+        name="Histórico"
         component={History}
         options={{
           tabBarIcon: ({ color }) => (
@@ -73,7 +73,7 @@ export function AppRoutes() {
         }}
       />
       <Screen
-        name="profile"
+        name="Perfil"
         component={Profile}
         options={{
           tabBarIcon: ({ color }) => (
