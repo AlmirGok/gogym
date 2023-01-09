@@ -20,6 +20,9 @@ const PHOTO_SIZE = 33;
 
 export function Profile() {
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
+  const [userPhoto, setUserPhoto] = useState(
+    "https://http2.mlstatic.com/D_NQ_NP_719683-MLA50145427713_052022-O.webp"
+  );
 
   async function handleUserPhotoSelect() {
     const photoSelected = await ImagePicker.launchImageLibraryAsync({
@@ -31,6 +34,7 @@ export function Profile() {
     if (photoSelected.canceled) {
       return;
     }
+    setUserPhoto(photoSelected.assets[0].uri);
   }
 
   return (
@@ -49,7 +53,7 @@ export function Profile() {
           ) : (
             <UserPhoto
               source={{
-                uri: "https://http2.mlstatic.com/D_NQ_NP_719683-MLA50145427713_052022-O.webp",
+                uri: userPhoto,
               }}
               alt="Image do usuário"
               size={PHOTO_SIZE}
