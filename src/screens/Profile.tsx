@@ -10,6 +10,7 @@ import {
 } from "native-base";
 
 import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from "expo-file-system";
 
 import { ScreenHeader } from "@components/ScreenHeader";
 import { UserPhoto } from "@components/UserPhoto";
@@ -37,6 +38,9 @@ export function Profile() {
         return;
       }
       if (photoSelected.assets[0].uri) {
+        const photoInfor = await FileSystem.getInfoAsync(
+          photoSelected.assets[0].uri
+        );
         setUserPhoto(photoSelected.assets[0].uri);
       }
     } catch (error) {
