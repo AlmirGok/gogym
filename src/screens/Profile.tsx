@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TouchableOpacity } from "react-native";
+import { Alert, TouchableOpacity } from "react-native";
 import {
   Center,
   ScrollView,
@@ -41,6 +41,11 @@ export function Profile() {
         const photoInfor = await FileSystem.getInfoAsync(
           photoSelected.assets[0].uri
         );
+        if (photoInfor.size && photoInfor.size / 1024 / 1024 > 5) {
+          return Alert.alert(
+            "Essa imagem é muito grande. Escolha uma de até 5MB. "
+          );
+        }
         setUserPhoto(photoSelected.assets[0].uri);
       }
     } catch (error) {
