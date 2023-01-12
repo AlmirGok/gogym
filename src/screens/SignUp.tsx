@@ -8,14 +8,16 @@ import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 
 export function SignUp() {
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm();
 
   const navigation = useNavigation();
   function handleGoBack() {
     navigation.goBack();
   }
 
-  function handleSignUp() {}
+  function handleSignUp(data: any) {
+    console.log(data);
+  }
 
   return (
     <ScrollView
@@ -85,11 +87,16 @@ export function SignUp() {
                 secureTextEntry
                 onChangeText={onChange}
                 value={value}
+                onSubmitEditing={handleSubmit(handleSignUp)}
+                returnKeyType="send"
               />
             )}
           />
 
-          <Button title="Criar e acessar" onPress={handleSignUp} />
+          <Button
+            title="Criar e acessar"
+            onPress={handleSubmit(handleSignUp)}
+          />
         </Center>
         <Button
           title="Voltar para o login"
