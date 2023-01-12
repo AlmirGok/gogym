@@ -98,7 +98,7 @@ export function Profile() {
           <Input placeholder="E-mail" bg="gray.400" isDisabled />
         </Center>
         <VStack px={10} mt={12} mb={12}>
-          <Heading color="gray.200" fontSize="md" mb={3}>
+          <Heading color="gray.200" fontSize="md" mb={3} fontFamily="heading">
             Alterar senha
           </Heading>
           <Input placeholder="Senha antiga" bg="gray.500" secureTextEntry />
