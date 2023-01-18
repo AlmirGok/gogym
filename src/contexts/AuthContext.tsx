@@ -19,7 +19,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       value={{
         user: {
           id: "1",
-          name: "Almir",
+          name: "Almir Santos",
           email: "almirwebdev@gmail.com",
           avatar: "almir.png",
         },
