@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigation } from "@react-navigation/native";
 import {
@@ -20,12 +21,15 @@ import { AppError } from "@utils/AppError";
 
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
+import { isLoading } from "expo-font";
 
 type FormData = {
   email: string;
   password: string;
 };
 export function SignIn() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const { signIn } = useAuth();
 
   const toas = useToast();
@@ -43,6 +47,7 @@ export function SignIn() {
 
   async function handleSignIn({ email, password }: FormData) {
     try {
+      setIsLoading(true);
       await signIn(email, password);
     } catch (error) {
       const isAppError = error instanceof AppError;
@@ -50,6 +55,8 @@ export function SignIn() {
       const title = isAppError
         ? error.message
         : "Não foi possível entrar. Tente novamente mais tarde.";
+
+      setIsLoading(false);
 
       toas.show({
         title,
@@ -112,7 +119,11 @@ export function SignIn() {
             )}
           />
 
-          <Button title="Acessar" onPress={handleSubmit(handleSignIn)} />
+          <Button
+            title="Acessar"
+            onPress={handleSubmit(handleSignIn)}
+            isLoading={isLoading}
+          />
         </Center>
         <Center mt={24}>
           <Text color="gray.100" fontSize="sm" mb={3} fontFamily="body">
