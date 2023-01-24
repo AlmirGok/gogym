@@ -3,7 +3,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 
 import { UserPhoto } from "./UserPhoto";
-import { FormProvider } from "react-hook-form/dist/useFormContext";
+
+import defaultUserPhotoImg from "@assets/userPhotoDefault.png";
+
 import { useAuth } from "@hooks/useAuth";
 
 export function HomeHeader() {
@@ -12,9 +14,7 @@ export function HomeHeader() {
   return (
     <HStack bg="gray.600" pt={16} pb={5} px={8} alignItems="center">
       <UserPhoto
-        source={{
-          uri: "https://http2.mlstatic.com/D_NQ_NP_719683-MLA50145427713_052022-O.webp",
-        }}
+        source={user.avatar ? { uri: user.avatar } : defaultUserPhotoImg}
         alt="Image do usuário"
         size={16}
         mr={4}
