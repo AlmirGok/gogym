@@ -18,7 +18,7 @@ import { Exercise } from "@screens/Exercise";
 
 type AppRoutes = {
   Início: undefined;
-  exercite: undefined;
+  exercise: undefined;
   Perfil: undefined;
   Histórico: undefined;
 };
@@ -82,7 +82,7 @@ export function AppRoutes() {
         }}
       />
       <Screen
-        name="exercite"
+        name="exercise"
         component={Exercise}
         options={{ tabBarButton: () => null }}
       />
