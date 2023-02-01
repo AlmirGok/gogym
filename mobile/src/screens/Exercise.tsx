@@ -13,15 +13,24 @@ import { TouchableOpacity } from "react-native";
 import { AppNavigatorRoutesProps } from "@routes/app.routes";
 
 import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Button } from "@components/Button";
 
 import BodySvg from "@assets/body.svg";
 import SeriesSvg from "@assets/series.svg";
 import RepetitionsSvg from "@assets/repetitions.svg";
 
+type RouteParamsProps = {
+  exerciseId: string;
+};
+
 export function Exercise() {
   const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  const route = useRoute();
+
+  const { exerciseId } = route.params as RouteParamsProps;
+  console.log("id => ", exerciseId);
 
   function handleGoBack() {
     navigation.goBack();
@@ -34,7 +43,12 @@ export function Exercise() {
           <Icon as={Feather} name="arrow-left" color="green.500" size={6} />
         </TouchableOpacity>
         <HStack justifyContent="space-between" flex={1} ml={8}>
-          <Heading color="gray.100" fontSize="lg" flexShrink={1} fontFamily="heading">
+          <Heading
+            color="gray.100"
+            fontSize="lg"
+            flexShrink={1}
+            fontFamily="heading"
+          >
             Puxada frontal
           </Heading>
           <HStack alignItems="center">

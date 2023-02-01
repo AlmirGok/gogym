@@ -17,8 +17,8 @@ import { History } from "@screens/History";
 import { Exercise } from "@screens/Exercise";
 
 type AppRoutes = {
-  Início: undefined;
-  exercise: undefined;
+  Home: undefined;
+  exercise: { exerciseId: string };
   Perfil: undefined;
   Histórico: undefined;
 };
@@ -55,7 +55,7 @@ export function AppRoutes() {
       }}
     >
       <Screen
-        name="Início"
+        name="Home"
         component={Home}
         options={{
           tabBarIcon: ({ color }) => (
