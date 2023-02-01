@@ -7,6 +7,7 @@ import {
   Image,
   Box,
   ScrollView,
+  useToast,
 } from "native-base";
 import { TouchableOpacity } from "react-native";
 
@@ -19,22 +20,49 @@ import { Button } from "@components/Button";
 import BodySvg from "@assets/body.svg";
 import SeriesSvg from "@assets/series.svg";
 import RepetitionsSvg from "@assets/repetitions.svg";
+import { AppError } from "@utils/AppError";
+import { api } from "@services/api";
+import { useEffect, useState } from "react";
+import { ExerciseDTO } from "@dtos/exerciseDTO";
 
 type RouteParamsProps = {
   exerciseId: string;
 };
 
 export function Exercise() {
+  const [exercise, setExercise] = useState<ExerciseDTO>({} as ExerciseDTO);
   const navigation = useNavigation<AppNavigatorRoutesProps>();
 
   const route = useRoute();
 
   const { exerciseId } = route.params as RouteParamsProps;
-  console.log("id => ", exerciseId);
+  const toast = useToast();
 
   function handleGoBack() {
     navigation.goBack();
   }
+
+  async function fetchExerciseDetails() {
+    try {
+      const response = await api.get(`/exercises/${exerciseId}`);
+      setExercise(response.data);
+    } catch (error) {
+      const isAppError = error instanceof AppError;
+      const title = isAppError
+        ? error.message
+        : "Não foi possível carregar os detalhes dos exercícios.";
+
+      toast.show({
+        title,
+        placement: "top",
+        bgColor: "red.500",
+      });
+    }
+  }
+
+  useEffect(() => {
+    fetchExerciseDetails();
+  }, [exerciseId]);
 
   return (
     <VStack flex={1}>
@@ -49,12 +77,12 @@ export function Exercise() {
             flexShrink={1}
             fontFamily="heading"
           >
-            Puxada frontal
+            {exercise.name}
           </Heading>
           <HStack alignItems="center">
             <BodySvg />
             <Text color="gray.200" ml="2" textTransform="capitalize">
-              Costas
+              {exercise.group}
             </Text>
           </HStack>
         </HStack>
@@ -63,7 +91,7 @@ export function Exercise() {
         <VStack p={8}>
           <Image
             source={{
-              uri: "https://www.centralnacionalunimed.com.br/documents/20182/11762772/capa-mulher-exercicio.jpg/035e0477-f1bc-4150-8e23-8b2561fc555b?t=1599143323428",
+              uri: `${api.defaults.baseURL}/exercise/demo/${exercise.demo}`,
             }}
             alt="Nome do exercício"
             w="full"
