@@ -38,7 +38,7 @@ export function Profile() {
 
   const toast = useToast();
   const { user } = useAuth();
-  const { control } = useForm<FormDataProps>({
+  const { control, handleSubmit } = useForm<FormDataProps>({
     defaultValues: {
       name: user.name,
       email: user.email,
@@ -75,6 +75,10 @@ export function Profile() {
     } finally {
       setPhotoIsLoading(false);
     }
+  }
+
+  async function handleProfileUpdate(data: FormDataProps) {
+    console.log(data);
   }
 
   return (
@@ -142,14 +146,51 @@ export function Profile() {
           <Heading color="gray.200" fontSize="md" mb={3} fontFamily="heading">
             Alterar senha
           </Heading>
-          <Input placeholder="Senha antiga" bg="gray.500" secureTextEntry />
-          <Input placeholder="Nova senha" bg="gray.500" secureTextEntry />
-          <Input
-            placeholder="Confirmar nova senha"
-            bg="gray.500"
-            secureTextEntry
+
+          <Controller
+            control={control}
+            name="old_password"
+            render={({ field: { onChange } }) => (
+              <Input
+                placeholder="Senha antiga"
+                bg="gray.500"
+                secureTextEntry
+                onChangeText={onChange}
+              />
+            )}
           />
-          <Button title="Atualizar" mt={4} />
+
+          <Controller
+            control={control}
+            name="password"
+            render={({ field: { onChange } }) => (
+              <Input
+                placeholder="Nova senha"
+                bg="gray.500"
+                secureTextEntry
+                onChangeText={onChange}
+              />
+            )}
+          />
+
+          <Controller
+            control={control}
+            name="confirm_password"
+            render={({ field: { onChange } }) => (
+              <Input
+                placeholder="Confirmar nova senha"
+                bg="gray.500"
+                secureTextEntry
+                onChangeText={onChange}
+              />
+            )}
+          />
+
+          <Button
+            title="Atualizar"
+            mt={4}
+            onPress={handleSubmit(handleProfileUpdate)}
+          />
         </VStack>
       </ScrollView>
     </VStack>
