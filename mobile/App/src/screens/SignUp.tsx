@@ -110,7 +110,7 @@ export function SignUp() {
                 placeholder="Nome"
                 onChangeText={onChange}
                 value={value}
-                errorMessege={errors.name?.message}
+                errorMessage={errors.name?.message}
               />
             )}
           />
@@ -125,7 +125,7 @@ export function SignUp() {
                 autoCapitalize="none"
                 onChangeText={onChange}
                 value={value}
-                errorMessege={errors.email?.message}
+                errorMessage={errors.email?.message}
               />
             )}
           />
@@ -139,7 +139,7 @@ export function SignUp() {
                 secureTextEntry
                 onChangeText={onChange}
                 value={value}
-                errorMessege={errors.password?.message}
+                errorMessage={errors.password?.message}
               />
             )}
           />
@@ -155,7 +155,7 @@ export function SignUp() {
                 value={value}
                 onSubmitEditing={handleSubmit(handleSignUp)}
                 returnKeyType="send"
-                errorMessege={errors.password_confirm?.message}
+                errorMessage={errors.password_confirm?.message}
               />
             )}
           />

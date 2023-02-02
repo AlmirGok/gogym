@@ -100,7 +100,7 @@ export function SignIn() {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 onChangeText={onChange}
-                errorMessege={errors.email?.message}
+                errorMessage={errors.email?.message}
               />
             )}
           />
@@ -114,7 +114,7 @@ export function SignIn() {
                 placeholder="Senha"
                 secureTextEntry
                 onChangeText={onChange}
-                errorMessege={errors.password?.message}
+                errorMessage={errors.password?.message}
               />
             )}
           />

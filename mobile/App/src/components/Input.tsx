@@ -4,11 +4,11 @@ import {
   FormControl,
 } from "native-base";
 type Props = IInputProps & {
-  errorMessege?: string | null;
+  errorMessage?: string | null;
 };
 
-export function Input({ errorMessege = null, isInvalid, ...rest }: Props) {
-  const invalid = !!errorMessege || isInvalid;
+export function Input({ errorMessage = null, isInvalid, ...rest }: Props) {
+  const invalid = !!errorMessage || isInvalid;
 
   return (
     <FormControl isInvalid={invalid} mb="4">
@@ -34,7 +34,7 @@ export function Input({ errorMessege = null, isInvalid, ...rest }: Props) {
         {...rest}
       />
       <FormControl.ErrorMessage color="red.500">
-        {errorMessege}
+        {errorMessage}
       </FormControl.ErrorMessage>
     </FormControl>
   );
