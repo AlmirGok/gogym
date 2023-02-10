@@ -23,6 +23,7 @@ import { Button } from "@components/Button";
 import { useAuth } from "@hooks/useAuth";
 import { api } from "@services/api";
 import { AppError } from "@utils/AppError";
+import defaultUserPhotoImg from "@assets/userPhotoDefault.png";
 
 const PHOTO_SIZE = 33;
 
@@ -59,9 +60,6 @@ const profileSchema = yup.object({
 export function Profile() {
   const [isUpdating, setIsUpdating] = useState(false);
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
-  const [userPhoto, setUserPhoto] = useState(
-    "https://http2.mlstatic.com/D_NQ_NP_719683-MLA50145427713_052022-O.webp"
-  );
 
   const toast = useToast();
   const { user, updateUserProfile } = useAuth();
@@ -180,9 +178,11 @@ export function Profile() {
             />
           ) : (
             <UserPhoto
-              source={{
-                uri: userPhoto,
-              }}
+              source={
+                user.avatar
+                  ? { uri: `${api.defaults.baseURL}/avatar/${user.avatar}` }
+                  : defaultUserPhotoImg
+              }
               alt="Image do usuário"
               size={PHOTO_SIZE}
             />
