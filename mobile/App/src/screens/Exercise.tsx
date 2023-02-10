@@ -20,6 +20,7 @@ import { Button } from "@components/Button";
 import BodySvg from "@assets/body.svg";
 import SeriesSvg from "@assets/series.svg";
 import RepetitionsSvg from "@assets/repetitions.svg";
+
 import { AppError } from "@utils/AppError";
 import { api } from "@services/api";
 import { useEffect, useState } from "react";
@@ -71,7 +72,7 @@ export function Exercise() {
       setSendingRegister(true);
       await api.post(`/history`, { exercise_id: exerciseId });
       toast.show({
-        title: "Parabéns!! Exercicio resgistrado no seu histórico.",
+        title: "Parabéns!! Exercício registrado no seu histórico.",
         placement: "top",
         bgColor: "green.700",
       });
