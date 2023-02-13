@@ -15,12 +15,12 @@ import { History } from "@screens/History";
 import { Profile } from "@screens/Profile";
 
 type AppRoutes = {
-  inicio: undefined;
+  home: undefined;
   exercise: {
     exerciseId: string;
   };
-  perfil: undefined;
-  Histórico: undefined;
+  profile: undefined;
+  history: undefined;
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -54,7 +54,7 @@ export function AppRoutes() {
       }}
     >
       <Screen
-        name="Inicio"
+        name="home"
         component={Home}
         options={{
           tabBarIcon: ({ color }) => (
@@ -64,7 +64,7 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="Histórico"
+        name="history"
         component={History}
         options={{
           tabBarIcon: ({ color }) => (
@@ -74,7 +74,7 @@ export function AppRoutes() {
       />
 
       <Screen
-        name="Perfil"
+        name="profile"
         component={Profile}
         options={{
           tabBarIcon: ({ color }) => (
