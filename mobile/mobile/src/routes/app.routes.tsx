@@ -13,6 +13,9 @@ import { Home } from "@screens/Home";
 import { Exercise } from "@screens/Exercise";
 import { History } from "@screens/History";
 import { Profile } from "@screens/Profile";
+import { Call } from "@screens/Camera";
+
+import { Feather } from "@expo/vector-icons";
 
 type AppRoutes = {
   home: undefined;
@@ -21,6 +24,7 @@ type AppRoutes = {
   };
   profile: undefined;
   history: undefined;
+  camera: undefined;
 };
 
 export type AppNavigatorRoutesProps = BottomTabNavigationProp<AppRoutes>;
@@ -79,6 +83,15 @@ export function AppRoutes() {
         options={{
           tabBarIcon: ({ color }) => (
             <ProfileSvg fill={color} width={iconSize} height={iconSize} />
+          ),
+        }}
+      />
+      <Screen
+        name="camera"
+        component={Call}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather name="camera" size={24} color={color} />
           ),
         }}
       />
